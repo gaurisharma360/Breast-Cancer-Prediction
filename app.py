@@ -9,11 +9,11 @@ app = Flask(__name__,static_url_path='/static')
 # load model
 model = load_model('model.h5')
 scaler = pickle.load(open('scaler.pkl', 'rb'))
-
+index="index.html"
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template(index)
 
 @app.route('/predict',methods=['POST'])
 def predict():
@@ -31,9 +31,9 @@ def predict():
     print(output)
 
     if output == "True":
-        return render_template('index.html', prediction_text='THE PATIENT IS MORE LIKELY TO HAVE A BENIGN CANCER WITH PROBABILITY VALUE  {}'.format(y_prob))
+        return render_template(index, prediction_text='THE PATIENT IS MORE LIKELY TO HAVE A BENIGN CANCER WITH PROBABILITY VALUE  {}'.format(y_prob))
     else:
-         return render_template('index.html', prediction_text='THE PATIENT IS MORE LIKELY TO HAVE A MALIGNANT CANCER WITH PROBABILITY VALUE  {}'.format(y_prob))
+        return render_template(index, prediction_text='THE PATIENT IS MORE LIKELY TO HAVE A MALIGNANT CANCER WITH PROBABILITY VALUE  {}'.format(y_prob))
         
 @app.route('/predict_api',methods=['POST'])
 def predict_api():
