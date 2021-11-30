@@ -107,6 +107,7 @@ model=Sequential()
 #activation=The Activation Function
 #Dropout function is used to avoid overfitting 
 #because overfitting fails in generalising the model
+#relu because it is fast and gives 0if x<0 and gives y=xif x>0
 model.add(Dense(units=5,kernel_initializer='uniform',activation='relu',input_dim=10))
 model.add(Dropout(0.2))
 
@@ -115,6 +116,7 @@ model.add(Dense(units=5,kernel_initializer='uniform',activation='relu'))
 model.add(Dropout(0.2))
 
 #Adding the output layer of our ANN Model
+#We want predictions b/w 0and 1 hence we use sigmoid function.
 model.add(Dense(units=1,kernel_initializer='uniform',activation='sigmoid'))
 
 #Compiling the model
