@@ -106,6 +106,7 @@ model=Sequential()
 #input_dim=Number of nodes in the input layer
 #activation=The Activation Function
 #Dropout function is used to avoid overfitting 
+#because overfitting fails in generalising the model
 model.add(Dense(units=5,kernel_initializer='uniform',activation='relu',input_dim=10))
 model.add(Dropout(0.2))
 
